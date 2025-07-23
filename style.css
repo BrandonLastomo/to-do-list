@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding-top: 50vh;
+}
+
+p {
+  display: inline-block;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.addTaskCard {
+  background-color: #50bcff;
+  padding: 16px;
+  margin-bottom: 32px;
+}
+
+.addTaskCard input {
+  border: none;
+  padding: 4px;
+}
+
+/* icons */
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
