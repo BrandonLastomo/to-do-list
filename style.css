@@ -6,7 +6,10 @@
 
 body {
   font-family: Arial, sans-serif;
-  padding-top: 50vh;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 p {
@@ -14,9 +17,7 @@ p {
 }
 
 .container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  position: absolute;
 }
 
 .addTaskCard {
@@ -28,6 +29,10 @@ p {
 .addTaskCard input {
   border: none;
   padding: 4px;
+}
+
+.taskDone {
+  text-decoration: line-through;
 }
 
 /* icons */

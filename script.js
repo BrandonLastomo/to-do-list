@@ -1,37 +1,39 @@
-const addTaskTxt = document.getElementById("addTaskTxt");
-const addTaskBtn = document.getElementById("addTaskBtn");
-const deleteTaskBtn = document.getElementById("deleteTaskBtn");
+document.addEventListener("DOMContentLoaded", () => {
+  const addTaskTxt = document.getElementById("addTaskTxt");
+  const addTaskBtn = document.getElementById("addTaskBtn");
+  const container = document.querySelector(".container");
 
-addTaskBtn.addEventListener("click", () => {
-  const taskText = addTaskTxt.value.trim();
-  console.log(taskText);
-  if (taskText) {
+  // add task
+  addTaskBtn.addEventListener("click", () => {
+    const taskText = addTaskTxt.value.trim();
+    if (!taskText) return;
+
+    // Create new task card
     const taskCard = document.createElement("div");
     taskCard.className = "taskCard";
+    taskCard.innerHTML = `
+      <p class="task">${taskText}</p>
+      <button class="deleteTaskBtn">Delete Task</button>
+    `;
 
-    const taskContent = document.createElement("p");
-    taskContent.textContent = taskText;
-
-    const deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "Delete Task";
-    deleteBtn.addEventListener("click", () => {
-      taskCard.remove();
-    });
-
-    taskCard.appendChild(taskContent);
-    taskCard.appendChild(deleteBtn);
-
-    document.querySelector(".container").appendChild(taskCard);
+    // Add new card
+    container.appendChild(taskCard);
 
     addTaskTxt.value = "";
-  }
-});
+  });
 
-deleteTaskBtn.addEventListener("click", () => {
-  const taskCard = document.querySelector(".taskCard");
-  if (taskCard) {
-    taskCard.remove();
-  } else {
-    alert("No task to delete.");
-  }
+  // cross and delete task using event delegation
+  container.addEventListener("click", (event) => {
+    const target = event.target;
+
+    // cross (mark as done) task
+    if (target.classList.contains("task")) {
+      target.classList.toggle("taskDone");
+    }
+
+    // delete task
+    if (target.classList.contains("deleteTaskBtn")) {
+      target.closest(".taskCard").remove();
+    }
+  });
 });
