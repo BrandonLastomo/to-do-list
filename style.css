@@ -1,3 +1,13 @@
+@font-face {
+  font-family: "Aozora Mincho Medium";
+  src: url("Aozora Mincho Medium.ttf");
+}
+
+@font-face {
+  font-family: "Urbanist";
+  src: url("Urbanist-VariableFont_wght.ttf");
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,25 +15,63 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-p {
-  display: inline-block;
+@keyframes baseline {
+  0% {
+    transform: translateY(140%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
-.container {
-  position: absolute;
+header {
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+header h4 {
+  animation: baseline 1s ease-in-out;
+}
+
+header main,
+input,
+button,
+p {
+  font-family: Urbanist, sans-serif;
+}
+
+main {
+  padding-bottom: 4rem;
+  display: flex;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Aozora Mincho Medium", serif;
+  font-weight: 100;
+}
+
+main {
+  display: flex;
+  align-items: space-evenly;
+  gap: 1rem;
 }
 
 .addTaskCard {
   background-color: #50bcff;
   padding: 16px;
   margin-bottom: 32px;
+  display: flex;
+  gap: 1rem;
 }
 
 .addTaskCard input {
@@ -31,8 +79,74 @@ p {
   padding: 4px;
 }
 
+.addTaskCard input:focus {
+  outline: none;
+  box-shadow: 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+.addTaskCard input:hover {
+  outline: none;
+  box-shadow: 4px 4px rgba(0, 0, 0, 0.5);
+  transition: all 0.5s ease-in-out;
+}
+
+.addTaskCard button {
+  background-color: #50bcff;
+  border: none;
+}
+
+.addTaskCard button:hover {
+  padding: 4px 8px;
+  border-radius: 1px;
+  background-color: white;
+  color: black;
+  box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.taskCard {
+  display: flex;
+  padding: 16px;
+  margin-bottom: 32px;
+  justify-content: center;
+  border-bottom: solid 1px lightgray;
+}
+
+.taskCard p {
+  display: inline-block;
+  margin-right: 48px;
+}
+
 .taskDone {
   text-decoration: line-through;
+}
+
+.deleteTaskBtn {
+  padding: 4px 8px;
+  border: none;
+  background-color: #d20223;
+  color: white;
+}
+
+.deleteTaskBtn:hover {
+  box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+footer {
+  text-align: center;
+  position: fixed;
+  z-index: -999;
+  bottom: 0;
+}
+
+footer h1 {
+  font-size: 10rem;
+  letter-spacing: -0.5rem;
+  color: white;
+  -webkit-text-stroke: 1px lightgray;
 }
 
 /* icons */
